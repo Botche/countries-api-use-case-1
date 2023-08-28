@@ -1,3 +1,5 @@
+using DataManipulatorApi.Constants;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient(GlobalConstants.COUNTRIES_CLIENT_NAME, httpClient =>
+{
+    httpClient.BaseAddress = new Uri(GlobalConstants.COUNTRIES_API_BASE_URL);
+});
 
 var app = builder.Build();
 
