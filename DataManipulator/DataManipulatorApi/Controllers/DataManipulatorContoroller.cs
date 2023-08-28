@@ -1,6 +1,7 @@
 ﻿namespace DataManipulatorApi.Controllers
 {
     using DataManipulatorApi.Constants;
+    using DataManipulatorApi.DataManipulator;
     using DataManipulatorApi.Models;
     using Microsoft.AspNetCore.Mvc;
     using System.Text.Json;
@@ -21,7 +22,36 @@
         {
             var countries = await GetAllCountries();
 
-            return countries;
+            var result = ManipulateTheData(nameCommon, population, sort, numberOfRecords, countries);
+
+            return result;
+        }
+
+        private static IEnumerable<CountryViewModel> ManipulateTheData(string? nameCommon, int? population, string? sort, int? numberOfRecords, IEnumerable<CountryViewModel> countries)
+        {
+            var dataManipulator = new DataManipulatorHelper(countries);
+
+            if (!string.IsNullOrEmpty(nameCommon))
+            {
+                dataManipulator.FilterByCommonName(nameCommon);
+            }
+
+            if (population.HasValue)
+            {
+                dataManipulator.FilterByPopulation(population.Value);
+            }
+
+            if (!string.IsNullOrEmpty(nameCommon))
+            {
+                dataManipulator.SortByCommonName(sort);
+            }
+
+            if (numberOfRecords.HasValue)
+            {
+                dataManipulator.LimitTheRecords(numberOfRecords.Value);
+            }
+
+            return dataManipulator.Collection;
         }
 
         private async Task<IEnumerable<CountryViewModel>> GetAllCountries()
