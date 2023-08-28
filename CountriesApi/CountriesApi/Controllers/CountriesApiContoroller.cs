@@ -8,11 +8,11 @@
 
     [ApiController]
     [Route("[controller]")]
-    public class DataManipulatorContoroller
+    public class CountriesApiContoroller
     {
         private readonly IHttpClientFactory httpClientFactory;
 
-        public DataManipulatorContoroller(IHttpClientFactory httpClientFactory)
+        public CountriesApiContoroller(IHttpClientFactory httpClientFactory)
         {
             this.httpClientFactory = httpClientFactory;
         }
