@@ -3,52 +3,72 @@
     using CountriesApi.Constants;
     using CountriesApi.Models;
 
-    public class DataManipulatorHelper
+    public class DataManipulatorHelper : IDataManipulatorHelper
     {
         public DataManipulatorHelper(IEnumerable<CountryViewModel> countries)
         {
-            this.Countries = countries;
+            Countries = countries;
         }
 
         public IEnumerable<CountryViewModel> Countries { get; set; }
 
-        public void FilterByCommonName(string commonName)
+        public void FilterByCommonName(string? commonName)
         {
-            this.Countries = this.Countries
+            if (string.IsNullOrWhiteSpace(commonName))
+            {
+                return;
+            }
+
+            Countries = Countries
                 .Where(x => x.Name.Common.Contains(commonName, StringComparison.OrdinalIgnoreCase));
         }
 
-        public void FilterByPopulation(int population)
+        public void FilterByPopulation(int? population)
         {
+            if (!population.HasValue)
+            {
+                return;
+            }
+
             var populationAsMillions = int.MaxValue;
 
             if (population < int.MaxValue / GlobalConstants.MILLION)
             {
-                populationAsMillions = population * GlobalConstants.MILLION;
+                populationAsMillions = population.Value * GlobalConstants.MILLION;
             }
 
-            this.Countries = this.Countries
+            Countries = Countries
                 .Where(x => x.Population < populationAsMillions);
         }
 
-        public void SortByCommonName(string sort)
+        public void SortByCommonName(string? sort)
         {
+            if (string.IsNullOrWhiteSpace(sort))
+            {
+                return;
+            }
+
             if (sort.Equals(GlobalConstants.ASCEND_SORT, StringComparison.OrdinalIgnoreCase))
             {
-                this.Countries = this.Countries
+                Countries = Countries
                     .OrderBy(x => x.Name.Common);
             }
             else if (sort.Equals(GlobalConstants.DESCEND_SORT, StringComparison.OrdinalIgnoreCase))
             {
-                this.Countries = this.Countries
+                Countries = Countries
                     .OrderByDescending(x => x.Name.Common);
             }
         }
 
-        public void LimitTheRecords(int numberOfRecordst)
+        public void LimitTheRecords(int? numberOfRecordst)
         {
-            this.Countries = this.Countries
-                .Take(numberOfRecordst);
+            if (!numberOfRecordst.HasValue)
+            {
+                return;
+            }
+
+            Countries = Countries
+                .Take(numberOfRecordst.Value);
         }
     }
 }

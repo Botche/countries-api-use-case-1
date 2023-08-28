@@ -31,25 +31,10 @@
         {
             var dataManipulator = new DataManipulatorHelper(countries);
 
-            if (!string.IsNullOrEmpty(nameCommon))
-            {
-                dataManipulator.FilterByCommonName(nameCommon);
-            }
-
-            if (population.HasValue)
-            {
-                dataManipulator.FilterByPopulation(population.Value);
-            }
-
-            if (!string.IsNullOrEmpty(sort))
-            {
-                dataManipulator.SortByCommonName(sort);
-            }
-
-            if (numberOfRecords.HasValue)
-            {
-                dataManipulator.LimitTheRecords(numberOfRecords.Value);
-            }
+            dataManipulator.FilterByCommonName(nameCommon);
+            dataManipulator.FilterByPopulation(population);
+            dataManipulator.SortByCommonName(sort);
+            dataManipulator.LimitTheRecords(numberOfRecords);
 
             return dataManipulator.Countries;
         }
@@ -58,7 +43,7 @@
         {
             var collection = Enumerable.Empty<CountryViewModel>();
 
-            var httpClient = this.httpClientFactory.CreateClient(GlobalConstants.COUNTRIES_CLIENT_NAME);
+            var httpClient = httpClientFactory.CreateClient(GlobalConstants.COUNTRIES_CLIENT_NAME);
             var httpResponseMessage = await httpClient.GetAsync("all");
 
             if (httpResponseMessage.IsSuccessStatusCode)
