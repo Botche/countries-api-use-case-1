@@ -1,8 +1,8 @@
-﻿namespace DataManipulatorApi.Controllers
+﻿namespace CountriesApi.Controllers
 {
-    using DataManipulatorApi.Constants;
-    using DataManipulatorApi.DataManipulator;
-    using DataManipulatorApi.Models;
+    using CountriesApi.Constants;
+    using CountriesApi.DataManipulator;
+    using CountriesApi.Models;
     using Microsoft.AspNetCore.Mvc;
     using System.Text.Json;
 

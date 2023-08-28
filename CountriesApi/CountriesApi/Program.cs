@@ -1,4 +1,4 @@
-using DataManipulatorApi.Constants;
+using CountriesApi.Constants;
 
 var builder = WebApplication.CreateBuilder(args);
 

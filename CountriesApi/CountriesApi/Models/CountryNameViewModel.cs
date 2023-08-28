@@ -1,4 +1,4 @@
-﻿namespace DataManipulatorApi.Models
+﻿namespace CountriesApi.Models
 {
     using System.Text.Json.Serialization;
 
@@ -6,8 +6,8 @@
     {
         public CountryNameViewModel()
         {
-            this.Common = string.Empty;
-            this.Official = string.Empty;
+            Common = string.Empty;
+            Official = string.Empty;
         }
 
         [JsonPropertyName("common")]

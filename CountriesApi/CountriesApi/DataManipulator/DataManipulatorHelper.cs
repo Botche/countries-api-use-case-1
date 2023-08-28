@@ -1,7 +1,7 @@
-﻿namespace DataManipulatorApi.DataManipulator
+﻿namespace CountriesApi.DataManipulator
 {
-    using DataManipulatorApi.Constants;
-    using DataManipulatorApi.Models;
+    using CountriesApi.Constants;
+    using CountriesApi.Models;
 
     public class DataManipulatorHelper
     {

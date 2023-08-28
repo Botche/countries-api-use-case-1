@@ -1,4 +1,4 @@
-﻿namespace DataManipulatorApi.Models
+﻿namespace CountriesApi.Models
 {
     using System.Text.Json.Serialization;
 
@@ -6,7 +6,7 @@
     {
         public CountryViewModel()
         {
-            this.Name = new CountryNameViewModel();
+            Name = new CountryNameViewModel();
         }
 
         [JsonPropertyName("name")]
