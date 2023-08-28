@@ -17,5 +17,18 @@
             this.Collection = this.Collection
                 .Where(x => x.Name.Common.Contains(commonName, StringComparison.OrdinalIgnoreCase));
         }
+
+        public void FilterByPopulation(int population)
+        {
+            var populationAsMillions = int.MaxValue;
+
+            if (population < int.MaxValue / GlobalConstants.MILLION)
+            {
+                populationAsMillions = population * GlobalConstants.MILLION;
+            }
+
+            this.Collection = this.Collection
+                .Where(x => x.Population < populationAsMillions);
+        }
     }
 }
