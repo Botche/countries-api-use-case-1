@@ -44,5 +44,11 @@
                     .OrderByDescending(x => x.Name.Common);
             }
         }
+
+        public void LimitTheRecords(int numberOfRecordst)
+        {
+            this.Collection = this.Collection
+                .Take(numberOfRecordst);
+        }
     }
 }
