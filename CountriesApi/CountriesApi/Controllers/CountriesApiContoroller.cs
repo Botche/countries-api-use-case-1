@@ -29,7 +29,7 @@
 
         private static IEnumerable<CountryViewModel> ManipulateTheData(string? nameCommon, int? population, string? sort, int? numberOfRecords, IEnumerable<CountryViewModel> countries)
         {
-            var dataManipulator = new DataManipulatorHelper(countries);
+            IDataManipulatorHelper dataManipulator = new DataManipulatorHelper(countries);
 
             dataManipulator.FilterByCommonName(nameCommon);
             dataManipulator.FilterByPopulation(population);
