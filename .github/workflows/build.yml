@@ -40,7 +40,7 @@ jobs:
       - name: Install Reportgenerator on Windows
         run: |
           dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
-          .\reportgenerator.exe "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
+          .\reportgenerator.exe "-reports:./CountriesApi/CountriesApi.UnitTests/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
