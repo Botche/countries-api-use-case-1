@@ -62,7 +62,7 @@
 
         public void LimitTheRecords(int? numberOfRecords)
         {
-            if (!numberOfRecords.HasValue)
+            if (!numberOfRecords.HasValue || numberOfRecords < 0)
             {
                 return;
             }
