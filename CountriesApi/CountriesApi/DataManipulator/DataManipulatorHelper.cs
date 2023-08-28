@@ -60,15 +60,15 @@
             }
         }
 
-        public void LimitTheRecords(int? numberOfRecordst)
+        public void LimitTheRecords(int? numberOfRecords)
         {
-            if (!numberOfRecordst.HasValue)
+            if (!numberOfRecords.HasValue)
             {
                 return;
             }
 
             Countries = Countries
-                .Take(numberOfRecordst.Value);
+                .Take(numberOfRecords.Value);
         }
     }
 }

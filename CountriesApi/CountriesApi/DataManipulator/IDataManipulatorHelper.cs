@@ -12,6 +12,6 @@
 
         public void SortByCommonName(string? sort);
 
-        public void LimitTheRecords(int? numberOfRecordst);
+        public void LimitTheRecords(int? numberOfRecords);
     }
 }
