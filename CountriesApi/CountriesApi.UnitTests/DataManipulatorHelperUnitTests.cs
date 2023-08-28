@@ -101,5 +101,25 @@ namespace CountriesApi.UnitTests
 
             Assert.AreEqual(expectedCount, this.dataManipulatorHelper.Countries.Count());
         }
+
+        [TestMethod]
+        [DataRow(1, 2)]
+        [DataRow(10, 5)]
+        [DataRow(100, 6)]
+        public void FilterByPopulation_PassCorrectValue_ReturnsCountriesWithLessPopulation(int population, int expectedCount)
+        {
+            this.dataManipulatorHelper.FilterByPopulation(population);
+
+            Assert.AreEqual(expectedCount, this.dataManipulatorHelper.Countries.Count());
+        }
+
+        [TestMethod]
+        [DataRow(null, 7)]
+        public void FilterByPopulation_PassNull_ReturnsAllCountries(int? population, int expectedCount)
+        {
+            this.dataManipulatorHelper.FilterByPopulation(population);
+
+            Assert.AreEqual(expectedCount, this.dataManipulatorHelper.Countries.Count());
+        }
     }
 }
