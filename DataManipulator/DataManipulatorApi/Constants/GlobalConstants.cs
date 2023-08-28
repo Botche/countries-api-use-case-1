@@ -6,5 +6,8 @@
         public const string COUNTRIES_CLIENT_NAME = "Countries";
 
         public const int MILLION = 1_000_000;
+
+        public const string ASCEND_SORT = "ascend";
+        public const string DESCEND_SORT = "descend";
     }
 }

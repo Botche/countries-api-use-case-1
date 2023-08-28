@@ -33,12 +33,12 @@
 
         public void SortByCommonName(string sort)
         {
-            if (sort == "ascend")
+            if (sort.Equals(GlobalConstants.ASCEND_SORT, StringComparison.OrdinalIgnoreCase))
             {
                 this.Collection = this.Collection
                     .OrderBy(x => x.Name.Common);
             }
-            else if (sort == "descend")
+            else if (sort.Equals(GlobalConstants.DESCEND_SORT, StringComparison.OrdinalIgnoreCase))
             {
                 this.Collection = this.Collection
                     .OrderByDescending(x => x.Name.Common);
