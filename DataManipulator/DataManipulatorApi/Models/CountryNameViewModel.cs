@@ -4,6 +4,12 @@
 
     public class CountryNameViewModel
     {
+        public CountryNameViewModel()
+        {
+            this.Common = string.Empty;
+            this.Official = string.Empty;
+        }
+
         [JsonPropertyName("common")]
         public string Common { get; set; }
 
