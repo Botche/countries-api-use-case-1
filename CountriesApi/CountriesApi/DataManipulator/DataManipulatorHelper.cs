@@ -5,16 +5,16 @@
 
     public class DataManipulatorHelper
     {
-        public DataManipulatorHelper(IEnumerable<CountryViewModel> collection)
+        public DataManipulatorHelper(IEnumerable<CountryViewModel> countries)
         {
-            this.Collection = collection;
+            this.Countries = countries;
         }
 
-        public IEnumerable<CountryViewModel> Collection { get; set; }
+        public IEnumerable<CountryViewModel> Countries { get; set; }
 
         public void FilterByCommonName(string commonName)
         {
-            this.Collection = this.Collection
+            this.Countries = this.Countries
                 .Where(x => x.Name.Common.Contains(commonName, StringComparison.OrdinalIgnoreCase));
         }
 
@@ -27,7 +27,7 @@
                 populationAsMillions = population * GlobalConstants.MILLION;
             }
 
-            this.Collection = this.Collection
+            this.Countries = this.Countries
                 .Where(x => x.Population < populationAsMillions);
         }
 
@@ -35,19 +35,19 @@
         {
             if (sort.Equals(GlobalConstants.ASCEND_SORT, StringComparison.OrdinalIgnoreCase))
             {
-                this.Collection = this.Collection
+                this.Countries = this.Countries
                     .OrderBy(x => x.Name.Common);
             }
             else if (sort.Equals(GlobalConstants.DESCEND_SORT, StringComparison.OrdinalIgnoreCase))
             {
-                this.Collection = this.Collection
+                this.Countries = this.Countries
                     .OrderByDescending(x => x.Name.Common);
             }
         }
 
         public void LimitTheRecords(int numberOfRecordst)
         {
-            this.Collection = this.Collection
+            this.Countries = this.Countries
                 .Take(numberOfRecordst);
         }
     }

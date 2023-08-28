@@ -51,7 +51,7 @@
                 dataManipulator.LimitTheRecords(numberOfRecords.Value);
             }
 
-            return dataManipulator.Collection;
+            return dataManipulator.Countries;
         }
 
         private async Task<IEnumerable<CountryViewModel>> GetAllCountries()
