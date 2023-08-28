@@ -1,5 +1,6 @@
 namespace CountriesApi.UnitTests
 {
+    using CountriesApi.Constants;
     using CountriesApi.DataManipulator;
     using CountriesApi.UnitTests.Data;
 
@@ -53,6 +54,30 @@ namespace CountriesApi.UnitTests
             this.dataManipulatorHelper.FilterByPopulation(population);
 
             Assert.AreEqual(expectedCount, this.dataManipulatorHelper.Countries.Count());
+        }
+
+        [TestMethod]
+        [DataRow(GlobalConstants.ASCEND_SORT, "Bulgaria")]
+        [DataRow(GlobalConstants.DESCEND_SORT, "United States")]
+        public void SortByCommonName_PassCorrectSort_ReturnsSorted(string sort, string expectedFirstCommonName)
+        {
+            this.dataManipulatorHelper.SortByCommonName(sort);
+
+            var firstCountry = this.dataManipulatorHelper.Countries.First();
+            Assert.AreEqual(expectedFirstCommonName, firstCountry.Name.Common);
+        }
+
+        [TestMethod]
+        [DataRow("", "Bulgaria")]
+        [DataRow(null, "Bulgaria")]
+        [DataRow(" ", "Bulgaria")]
+        [DataRow("sort", "Bulgaria")]
+        public void SortByCommonName_PassIncorrectSort_ReturnsNonSorted(string? sort, string expectedFirstCommonName)
+        {
+            this.dataManipulatorHelper.SortByCommonName(sort);
+
+            var firstCountry = this.dataManipulatorHelper.Countries.First();
+            Assert.AreEqual(expectedFirstCommonName, firstCountry.Name.Common);
         }
     }
 }
