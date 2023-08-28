@@ -30,5 +30,19 @@
             this.Collection = this.Collection
                 .Where(x => x.Population < populationAsMillions);
         }
+
+        public void SortByCommonName(string sort)
+        {
+            if (sort == "ascend")
+            {
+                this.Collection = this.Collection
+                    .OrderBy(x => x.Name.Common);
+            }
+            else if (sort == "descend")
+            {
+                this.Collection = this.Collection
+                    .OrderByDescending(x => x.Name.Common);
+            }
+        }
     }
 }
