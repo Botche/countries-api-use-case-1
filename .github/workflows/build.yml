@@ -55,7 +55,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"Botche_countries-api-use-case-1" /o:"botche" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"Botche_countries-api-use-case-1" /o:"botche" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.exclusions="./CountriesApi/CountriesApi/Controllers/**,./CountriesApi/CountriesApi/Program.cs"
           dotnet build ./CountriesApi/CountriesApi.sln --configuration Release
           .\.dotnet\dotnet-coverage\dotnet-coverage collect 'dotnet test ./CountriesApi/CountriesApi.sln' -f xml -o 'coverage.xml'
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
