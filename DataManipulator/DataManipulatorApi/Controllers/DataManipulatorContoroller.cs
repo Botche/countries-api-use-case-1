@@ -41,7 +41,7 @@
                 dataManipulator.FilterByPopulation(population.Value);
             }
 
-            if (!string.IsNullOrEmpty(nameCommon))
+            if (!string.IsNullOrEmpty(sort))
             {
                 dataManipulator.SortByCommonName(sort);
             }
