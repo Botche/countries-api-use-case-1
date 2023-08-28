@@ -26,9 +26,9 @@ namespace CountriesApi.UnitTests
         }
 
         [TestMethod]
-        [DataRow(null, 7)]
-        [DataRow("", 7)]
-        [DataRow(" ", 7)]
+        [DataRow(null, CountriesData.CountOfCountries)]
+        [DataRow("", CountriesData.CountOfCountries)]
+        [DataRow(" ", CountriesData.CountOfCountries)]
         public void FilterByCommonName_PassNullOrEmpty_ReturnsAllCountries(string? commonName, int expectedCount)
         {
             this.dataManipulatorHelper.FilterByCommonName(commonName);
@@ -48,7 +48,7 @@ namespace CountriesApi.UnitTests
         }
 
         [TestMethod]
-        [DataRow(null, 7)]
+        [DataRow(null, CountriesData.CountOfCountries)]
         public void FilterByPopulation_PassNull_ReturnsAllCountries(int? population, int expectedCount)
         {
             this.dataManipulatorHelper.FilterByPopulation(population);
@@ -78,6 +78,28 @@ namespace CountriesApi.UnitTests
 
             var firstCountry = this.dataManipulatorHelper.Countries.First();
             Assert.AreEqual(expectedFirstCommonName, firstCountry.Name.Common);
+        }
+
+        [TestMethod]
+        [DataRow(1)]
+        [DataRow(2)]
+        [DataRow(3)]
+        [DataRow(4)]
+        public void LimitTheRecords_PassCorrectValue_ReturnLimitedData(int numberOfRecords)
+        {
+            this.dataManipulatorHelper.LimitTheRecords(numberOfRecords);
+
+            Assert.AreEqual(numberOfRecords, this.dataManipulatorHelper.Countries.Count());
+        }
+
+        [TestMethod]
+        [DataRow(null)]
+        [DataRow(-1)]
+        public void LimitTheRecords_PassIncorrectValue_ReturnFullList(int? numberOfRecords)
+        {
+            this.dataManipulatorHelper.LimitTheRecords(numberOfRecords);
+
+            Assert.AreEqual(CountriesData.CountOfCountries, this.dataManipulatorHelper.Countries.Count());
         }
     }
 }

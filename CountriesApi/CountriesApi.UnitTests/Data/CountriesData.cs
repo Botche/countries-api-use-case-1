@@ -4,6 +4,8 @@
 
     public static class CountriesData
     {
+        public const int CountOfCountries = 7;
+
         public static IEnumerable<CountryViewModel> GenerateCountriesData()
         {
             return new List<CountryViewModel>()
