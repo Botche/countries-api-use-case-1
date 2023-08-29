@@ -33,28 +33,28 @@ Preliminary steps:
 3. Pass nameCommon with upper letter. The result is the same
     1. Pass "St" to nameCommon parameter
     2. The result is only countries that contain "st" in their common name 
-3. Pass populationAsMillions
+4. Pass populationAsMillions
     1. Pass 1 to populationAsMillions parameter
     2. The result is only countries that have a population of less than 1 million
-4. Pass negative value to populationAsMillions
+5. Pass negative value to populationAsMillions
     1. Pass -1 to populationAsMillions parameter
     2. The result is empty collection
-5. Pass 0 to populationAsMillions
+6. Pass 0 to populationAsMillions
     1. Pass 0 to populationAsMillions parameter
     2. The result is empty collection
-6. Pass "ascend" to sort parameter
+7. Pass "ascend" to sort parameter
     1. Pass "ascend" to sort parameter
     2. The result is all countries sorted ascending by common name
-7. Pass "descend" to sort parameter
+8. Pass "descend" to sort parameter
     1. Pass "descend" to sort parameter
     2. The result is all countries sorted descending by common name
-8. Pass something different to sort parameter
+9. Pass something different to sort parameter
     1. Pass "test" to sort parameter
     2. The result is all countries without sorting
-9. Pass numberOfRecords
+10. Pass numberOfRecords
     1. Pass 15 to numberOfRecords
     2. The result is first 15 countries
-8. Pass all parameters
+11. Pass all parameters
     1. Pass "united" to nameCommon parameter
     2. Pass 200 to populationAsMillions parameter
     3. Pass "descend" to sort parameter
