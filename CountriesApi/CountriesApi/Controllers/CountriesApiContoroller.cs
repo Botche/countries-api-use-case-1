@@ -63,7 +63,7 @@
                     .DeserializeAsync<IEnumerable<CountryViewModel>>(contentStream);
             }
 
-            return collection;
+            return collection ?? Enumerable.Empty<CountryViewModel>();
         }
     }
 }
