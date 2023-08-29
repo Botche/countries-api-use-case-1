@@ -17,12 +17,20 @@
             this.httpClientFactory = httpClientFactory;
         }
 
+        /// <summary>
+        /// Get countries from external API and apply manipulations on the data such like filter, sort and limit.
+        /// </summary>
+        /// <param name="nameCommon">A string to filter by countries' common name</param>
+        /// <param name="populationAsMillions">Number to filter by (pass it as a million. Example: 1 = 1million)</param>
+        /// <param name="sort">A string to sort by common name. (valid sorts "ascend" or "descend")</param>
+        /// <param name="numberOfRecords">Number to limit the records of the data.</param>
+        /// <returns>Manipulated data of CountryViewModel</returns>
         [HttpGet(Name = "GetCountries")]
-        public async Task<IEnumerable<CountryViewModel>> Get(string? nameCommon, int? population, string? sort, int? numberOfRecords)
+        public async Task<IEnumerable<CountryViewModel>> Get(string? nameCommon, int? populationAsMillions, string? sort, int? numberOfRecords)
         {
             var countries = await GetAllCountries();
 
-            var result = ManipulateTheData(nameCommon, population, sort, numberOfRecords, countries);
+            var result = ManipulateTheData(nameCommon, populationAsMillions, sort, numberOfRecords, countries);
 
             return result;
         }
