@@ -4,8 +4,8 @@
 
 ## Project Description
 Web API project created with .NET Core 6. 
-The purpose of the API is to optimize data collected from an API to efficiently process and transform it into usable format for further representation. It is working with https://restcountries.com/v3.1/ API.
-The available endpoint to work is GET /CountriesApiContoroller. It is accepting 4 parameters which are optional. 
+The purpose of the API is to optimize data collected from an API to efficiently process and transform it into a usable format for further representation. It is working with https://restcountries.com/v3.1/ API. <br>
+The available endpoint to work is GET /CountriesApiContoroller. It accepts 4 parameters which are optional. 
 - nameCommon: string parameter to filter by
 - populationAsMillions: int parameter to filter by
 - sort: string to sort by common name
@@ -19,23 +19,23 @@ The available endpoint to work is GET /CountriesApiContoroller. It is accepting 
 5. Run the API
 
 ## Examples (How to use)
-Пreliminary steps:
+Preliminary steps:
 1. Run the project
 2. Click the endpoint
-3. Click "Try it out" button
-
+3. Click the "Try it out" button
+---
 1. Simple run
     1. Click "Execute" button
     2. The result is all information from the external API without manipulations
 2. Pass nameCommon
     1. Pass "st" to nameCommon parameter
-    2. The result is only countries that contains "st" in their common name 
+    2. The result is only countries that contain "st" in their common name 
 3. Pass nameCommon with upper letter. The result is the same
     1. Pass "St" to nameCommon parameter
-    2. The result is only countries that contains "st" in their common name 
+    2. The result is only countries that contain "st" in their common name 
 3. Pass populationAsMillions
     1. Pass 1 to populationAsMillions parameter
-    2. The result is only countries that have population less than 1 million
+    2. The result is only countries that have a population of less than 1 million
 4. Pass negative value to populationAsMillions
     1. Pass -1 to populationAsMillions parameter
     2. The result is empty collection
@@ -44,7 +44,7 @@ The available endpoint to work is GET /CountriesApiContoroller. It is accepting 
     2. The result is empty collection
 6. Pass "ascend" to sort parameter
     1. Pass "ascend" to sort parameter
-    2. The result is all countries sorted acsending by common name
+    2. The result is all countries sorted ascending by common name
 7. Pass "descend" to sort parameter
     1. Pass "descend" to sort parameter
     2. The result is all countries sorted descending by common name
@@ -59,4 +59,4 @@ The available endpoint to work is GET /CountriesApiContoroller. It is accepting 
     2. Pass 200 to populationAsMillions parameter
     3. Pass "descend" to sort parameter
     4. Pass 1 to numberOfRecords
-    5. The result is all countries that have united in their common name and have less than 200 millions. Sorted by descending common name. Limited to only 1 result.
+    5. The result is all countries that have united in their common name and have less than 200 million. Sorted by descending common name. Limited to only 1 result.
