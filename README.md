@@ -2,7 +2,7 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Botche_countries-api-use-case-1&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Botche_countries-api-use-case-1)
 
-The project is developed for a research initiative from a company on the theme GENERATIVE AI - PRODUCTIVITY BOOST.
+The project is developed for a research initiative on the theme of GENERATIVE AI - PRODUCTIVITY BOOST.
 
 ## Project Description
 Web API project created with .NET Core 6. 
